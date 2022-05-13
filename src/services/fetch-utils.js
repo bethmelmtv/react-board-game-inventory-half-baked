@@ -1,7 +1,7 @@
 import { client, checkError } from './client';
 
 export function getUser() {
-  console.log(client.auth);
+  // console.log(client.auth);
   return client.auth.session();
 
   //client.auth.session() returns the session information and verify the user
@@ -37,7 +37,7 @@ export async function createGame(game) {
 
 export async function updateGame(id, newGame) {
   const { body, error } = await client.from('board_games').update(newGame).match({ id });
-  console.log(body);
+  // console.log(body);
   return error || body;
 }
 

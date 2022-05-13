@@ -17,7 +17,7 @@ export default function App() {
 
   useEffect(() => {
     const user = getUser(); // this gets an object of the person's token?
-    console.log(user); // lets see what it returns
+    // console.log(user); // lets see what it returns
 
     if (user) {
       setUser(user); //inject into state
