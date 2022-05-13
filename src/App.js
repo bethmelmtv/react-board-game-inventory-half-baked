@@ -16,11 +16,11 @@ export default function App() {
   // add a useEffect to get the user and inject the user object into state on load
 
   useEffect(() => {
-    const user = getUser();
-    console.log(user);
+    const user = getUser(); // this gets an object of the person's token?
+    console.log(user); // lets see what it returns
 
     if (user) {
-      setUser(user);
+      setUser(user); //inject into state
     }
   }, []);
 
@@ -43,6 +43,7 @@ export default function App() {
         </header>
         <main>
           <Switch>
+            {/* react-router-dom tool that allows us to switch to different routes */}
             <Route exact path="/">
               {/* if there is a user, redirect to the board games list. Otherwise, render the auth page. Note that the AuthPage will need a function called setUser that can set the user state in App.js */}
               {user ? <Redirect to="/board-games" /> : <AuthPage setUser={setUser} />}

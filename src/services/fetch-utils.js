@@ -1,7 +1,10 @@
 import { client, checkError } from './client';
 
 export function getUser() {
+  console.log(client.auth);
   return client.auth.session();
+
+  //client.auth.session() returns the session information and verify the user
 }
 
 // signs an new user in and puts an auth token in local storage in the browser
@@ -21,6 +24,7 @@ export async function signIn(email, password) {
 // removes the token from local storage and redirects the user home
 export async function logout() {
   await client.auth.signOut();
+  //what does client.auth console log out to ?
 
   return (window.location.href = '../');
 }
@@ -31,12 +35,15 @@ export async function createGame(game) {
   return checkError(response);
 }
 
-// export async function updateGame() {
-//   const response = await client
-//     .from('board_games')
-//     .update();
-//     )
+export async function updateGame(id, newGame) {
+  const { body, error } = await client.from('board_games').update(newGame).match({ id });
+  console.log(body);
+  return error || body;
+}
 
+// export async function updateGame(id, newGame) {
+//   const response = await client.from('board_games').update(newGame).match({ id });
+//   console.log(response.body);
 //   return checkError(response);
 // }
 
